@@ -21,6 +21,8 @@ test:
   database: db/test.sqlite3
 
 production:
-  <<: postgresql
-  database: Planander_production
+  adapter: postgresql
+  encoding: unicode
+  database: db/production
+  timeout: 5000
   password:
