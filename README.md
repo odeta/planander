@@ -1,6 +1,6 @@
-# RECE
+# PLANANDER
 
-This will be an app for sharing your favorite recipes with others.
+This will be a calendar app.
 
 ## Getting started
 
