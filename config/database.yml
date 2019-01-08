@@ -6,7 +6,7 @@
 #
 default: &default
   adapter: sqlite3
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  pool: 5
   timeout: 5000
 
 development:
@@ -21,8 +21,7 @@ test:
   database: db/test.sqlite3
 
 production:
-  adapter: postgresql
-  encoding: unicode
-  database: db/production
-  timeout: 5000
-  password:
+  <<: *default
+  database: planander_production
+  username: planander
+  password: <%= ENV['PLANANDER_DATABASE_PASSWORD'] %>
