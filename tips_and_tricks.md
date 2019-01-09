@@ -5,3 +5,5 @@ def show
   debugger
 end
 ```
+
+The `flash.now` method is used for flash messages on rendered pages.
