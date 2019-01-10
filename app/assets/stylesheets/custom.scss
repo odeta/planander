@@ -34,6 +34,10 @@ textarea {
 
 /* typography */
 
+* {
+  font-family: 'Josefin Sans', sans-serif;
+}
+
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
 }
@@ -61,11 +65,19 @@ p {
 
 /* header */
 
+header {
+  background-color: #BCBABE;
+}
+
+navbar {
+  min-height: 10px;
+}
+
 #logo {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: white;
+  color: #F1F1F2;
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
