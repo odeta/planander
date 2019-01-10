@@ -174,13 +174,11 @@ input {
 }
 
 .login-form {
-  margin-top: 50px;
   max-width: 370px;
-  margin: 0 auto 25px;
+  margin: 100px auto;
   background-color: #A1D6E2;
   max-height: 400px;
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding: 30px 16px !important;
 }
 
 .login-form label {
@@ -190,4 +188,8 @@ input {
 #session_remember_me {
   width: auto;
   margin-left: 0;
+}
+
+.full-width {
+  width: 100%;
 }
