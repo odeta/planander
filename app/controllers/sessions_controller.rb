@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  before_action :logged_in_user, only: %i[new]
+
   def new
   end
 
@@ -17,5 +19,12 @@ class SessionsController < ApplicationController
   def destroy
     log_out if logged_in?
     redirect_to root_url
+  end
+
+  private
+
+  # Confirms a logged-in user.
+  def logged_in_user
+    redirect_to home_url if logged_in?
   end
 end

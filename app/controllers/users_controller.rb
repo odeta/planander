@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       flash[:success] = 'Welcome to Planander!'
-      redirect_to home_url # same as redirect_to user_url(@user)
+      redirect_to home_url
     else
       render 'new'
     end
