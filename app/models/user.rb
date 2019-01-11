@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :calendars, dependent: :destroy
   attr_accessor :remember_token
   before_save { email.downcase! } # the same as { self.email = self.email.downcase }
 
