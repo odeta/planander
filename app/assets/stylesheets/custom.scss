@@ -171,14 +171,19 @@ input {
 
 .new-user {
   padding-top: 5px;
+  margin-bottom: 0 !important;
+  font-size: 16px !important;
 }
 
 .login-form {
   max-width: 370px;
-  margin: 100px auto;
+  margin: 70px auto;
   background-color: #A1D6E2;
-  max-height: 400px;
   padding: 30px 16px !important;
+}
+
+.login-form input[type="checkbox"] {
+  margin: 1px 0 0;
 }
 
 .login-form label {

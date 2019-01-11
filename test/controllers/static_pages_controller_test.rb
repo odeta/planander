@@ -1,8 +1,13 @@
 require 'test_helper'
 
 class StaticPagesControllerTest < ActionDispatch::IntegrationTest
-  test 'should get root' do
-    get root_path
+  def setup
+    @user = users(:john)
+  end
+
+  test 'should get home' do
+    log_in_as(@user)
+    get home_path
     assert_response :success
     assert_select 'title', 'Planander'
   end
