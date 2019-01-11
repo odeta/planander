@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       flash[:success] = 'Welcome to Planander!'
-      redirect_to root_url # same as redirect_to user_url(@user)
+      redirect_to home_url
     else
       render 'new'
     end
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   def update
     if @user.update_attributes(user_params)
       flash[:success] = 'Profile updated'
-      redirect_to @user
+      redirect_to home_url
     else
       render 'edit'
     end
@@ -40,13 +40,13 @@ class UsersController < ApplicationController
     unless logged_in?
       store_location
       flash[:danger] = 'Please log in.'
-      redirect_to login_url
+      redirect_to home_url
     end
   end
 
   # Confirms the correct user.
   def correct_user
     @user = User.find(params[:id])
-    redirect_to(root_url) unless current_user?(@user)
+    redirect_to(home_url) unless current_user?(@user)
   end
 end
