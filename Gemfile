@@ -11,6 +11,7 @@ gem 'rails-controller-testing'
 gem 'sass-rails',     '5.0.6'
 gem 'turbolinks',     '5.0.1'
 gem 'uglifier',       '3.2.0'
+gem 'wdm',            '>= 0.1.0' if Gem.win_platform?
 
 group :development, :test do
   gem 'byebug',  '9.0.6', platform: :mri
