@@ -9,12 +9,22 @@
 
   <body>
     <%= render 'layouts/header' %>
-    <div class="container">
-      <% flash.each do |message_type, message| %>
-        <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
-      <% end %>
-      <%= yield %>
-      <%= debug(params) if Rails.env.development? %>
+    <div class="wrapper">
+      <%= render 'layouts/sidebar' if logged_in? %>
+      <div class="container">
+        <% flash.each do |message_type, message| %>
+          <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+        <% end %>
+        <%= yield %>
+        <%= debug(params) if Rails.env.development? %>
+      </div>
     </div>
+    <script>
+      $(document).ready(function () {
+          $('#sidebarCollapse').on('click', function () {
+              $('#sidebar').toggleClass('active');
+          });
+      });
+    </script>
   </body>
 </html>

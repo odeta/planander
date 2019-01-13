@@ -1,14 +1,22 @@
 <header class="navbar navbar-fixed-top">
   <div class="container-fluid">
+    <% if logged_in? %>
+      <button type="button" id="sidebarCollapse" class="menu-button">
+        <i class="material-icons menu-icon">menu</i>
+      </button>
+      <button type="button" id="createCalendar" class="menu-button">
+        <i class="material-icons menu-icon">note_add</i>
+      </button>
+    <% end %>
     <%= link_to "planander", root_path, id: "logo" %>
 
     <% if logged_in? %>
 
       <div class="btn-group btn-group-sm buttons" role="group">
-        <button id="day" type="button" class="btn btn-default" onclick="dayClick()">Day</button>
-        <button id="week" type="button" class="btn btn-default" onclick="weekClick()">Week</button>
-        <button id="month" type="button" class="btn btn-default" onclick="monthClick()">Month</button>
-        <button id="year" type="button" class="btn btn-default" onclick="yearClick()">Year</button>
+        <button id="day" type="button" class="btn btn-default view-button" onclick="dayClick()">Day</button>
+        <button id="week" type="button" class="btn btn-default view-button" onclick="weekClick()">Week</button>
+        <button id="month" type="button" class="btn btn-default view-button" onclick="monthClick()">Month</button>
+        <button id="year" type="button" class="btn btn-default view-button" onclick="yearClick()">Year</button>
       </div>
 
       <script>

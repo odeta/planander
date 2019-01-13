@@ -1,0 +1,7 @@
+<nav id="sidebar">
+    <ul class="list-unstyled">
+        <% current_user.calendars.each do |cal| %>
+            <li><button type="button" class="cal-button"><%= cal.title %></button></li>
+        <% end %>
+    </ul>
+</nav>
