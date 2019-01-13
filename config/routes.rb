@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   post   '/signup',  to: 'users#create'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
-  get    '/home',    to: 'static_pages#home'
+  get    '/home',    to: 'static_pages#month_view'
 
   resources :users, except: %i[show]
 end

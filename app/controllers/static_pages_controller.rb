@@ -1,7 +1,14 @@
+require 'date'
+
 class StaticPagesController < ApplicationController
   before_action :logged_in_user, only: %i[home]
 
   def home
+    @working_date = Time.new(2018, 02, 5)
+  end
+
+  def month_view
+    @working_date = Time.now unless (@working_date = Time.new(cookies[:last_date]))
   end
 
   private
