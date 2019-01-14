@@ -42,13 +42,14 @@
                 <div class="col-sm-10">
                 <select class="form-control" id="cal" name="calendar_id">
                     <% current_user.calendars.each do |cal| %>
+                        <% unless cal.id.nil? %>
                         <option value="<%= cal.id %>"><%= cal.title %></option>
+                        <% end %>
                     <% end %>
                 </select>
                 </div>
             </div>
-            <button type="submit" name="submit" class="btn btn-info form-control" >Submit</button>
-            </div>
+            <button type="submit" name="submit" class="btn btn-info form-control" >Create</button>
         </div>
     </form>
     </div>

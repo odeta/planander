@@ -19,6 +19,8 @@
         <%#= debug(params) if Rails.env.development? %>
       </div>
     </div>
+    <%= render 'layouts/new_calendar_modal' %>
+    <%= render 'layouts/new_event_modal' %>
     <script>
       $(document).ready(function () {
           $('#sidebarCollapse').on('click', function () {

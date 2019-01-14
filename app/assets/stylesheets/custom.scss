@@ -263,6 +263,7 @@ input {
 
 .menu-button {
   color: #F1F1F2;
+  max-height: 23px;
 }
 
 .menu-button:active, .menu-button:focus {
@@ -295,7 +296,7 @@ input {
 .d-flex {
   display:flex;
 }
-.d-flex>div {
+.d-flex > div {
   float: none;
 }
 .col-auto {
@@ -330,7 +331,7 @@ input {
   border: 1px solid #CCCCCC;
 }
 
-h2, p{
+h2, p {
   margin: 0;
   padding: 5px;
 }
@@ -340,4 +341,27 @@ h2, p{
   background-color: #F1F1F2;
   float: right;
   margin-right: 10px;
+}
+
+.add-calendar {
+  border: none;
+  background-color: #F1F1F2;
+  color: #a6a4a9;
+  margin-left: 10px !important;
+  max-height: 32px;
+  padding-right: 0;
+  padding-left: 0 !important;
+  i {
+    font-size: 30px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  #new-cal-modal, #new-event-modal {
+    max-width: 355px;
+  }
+}
+
+#new-cal-modal .no-padding {
+  padding: 0 !important;
 }
