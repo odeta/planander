@@ -14,5 +14,7 @@
     <%= f.submit yield(:button_text), class: "btn btn-primary" %>
   <% end %>
 
-  <p class="new-user">Have an account? <%= link_to "Log in", root_path %></p>
+  <% unless logged_in? %>
+    <p class="new-user">Have an account? <%= link_to "Log in", root_path %></p>
+  <% end %>
 </div>

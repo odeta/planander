@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get    '/week',    to: 'static_pages#week_view'
   get    '/month',   to: 'static_pages#month_view'
   get    '/year',    to: 'static_pages#year_view'
+  post   '/change',  to: 'static_pages#change'
 
   resources :users, except: %i[show]
 end

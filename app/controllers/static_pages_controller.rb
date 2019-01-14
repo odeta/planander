@@ -2,6 +2,7 @@ require 'date'
 
 class StaticPagesController < ApplicationController
   before_action :logged_in_user, only: %i[home]
+  skip_before_action :verify_authenticity_token, only: %i[change]
 
   def day_view
     @working_date = check_parameters
@@ -35,6 +36,12 @@ class StaticPagesController < ApplicationController
     @prev = url_date(@working_date - 1.year)
   end
 
+  def change
+    calendar = current_user.calendars.find(change_params[:cid])
+    calendar.update(title: change_params[:newtitle])
+    redirect_to home_path
+  end
+
   private
 
   def check_parameters
@@ -52,6 +59,10 @@ class StaticPagesController < ApplicationController
 
   def url_date(date)
     "?year=" + String(date.year) + "&month=" + String(date.month) + "&day=" + String(date.day)
+  end
+
+  def change_params
+    params.permit(:cid, :newtitle)
   end
 
   # Confirms a logged-in user.
