@@ -317,7 +317,15 @@ input {
   width: 100%;
 }
 
+.day-layout {
+  border: 1px solid;
+}
+
+.void {
+  border: 1px solid #CCCCCC;
+}
+
 h2, p{
   margin: 0;
-  padding: auto;
+  padding: 5px;
 }
