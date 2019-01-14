@@ -236,7 +236,7 @@ input {
   transition: all 0.3s;
   min-width: 200px;
   max-width: 200px;
-  min-height: 100vh;
+  min-height: 100%;
   li {
     padding-left: 15px;
     padding-bottom: 3px;
@@ -273,4 +273,59 @@ input {
   background: none !important;
   padding: 4px 0 0 0;
   border: none;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.cal-row {
+  //position: fixed;
+  //right: 0;
+  height: 15%;
+  width: 100%;
+  margin: 0;
+}
+
+.d-flex {
+  display:flex;
+}
+.d-flex>div {
+  float: none;
+}
+.col-auto {
+  flex: 0 0 auto;
+  width: auto;
+  max-width: none;
+}
+
+.day-width {
+  width: calc(100%/7);
+}
+
+.month-header {
+  height: 5%;
+  background-color: aqua;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 100%;
+}
+
+.month-layout {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.day-layout {
+  border: 1px solid;
+}
+
+.void {
+  border: 1px solid #CCCCCC;
+}
+
+h2, p{
+  margin: 0;
+  padding: 5px;
 }
