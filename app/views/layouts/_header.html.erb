@@ -12,18 +12,20 @@
 
     <% if logged_in? %>
 
-      <div class="btn-group btn-group-sm buttons" role="group">
-        <%= link_to 'Day', day_path + @url_date, class: "btn btn-default view-button" %>
-        <%= link_to 'Week', week_path + @url_date, class: "btn btn-default view-button" %>
-        <%= link_to 'Month', month_path + @url_date, class: "btn btn-default view-button" %>
-        <%= link_to 'Year', year_path + @url_date, class: "btn btn-default view-button" %>
-      </div>
+      <% unless @url_date.nil? %>
+        <div class="btn-group btn-group-sm buttons" role="group">
+          <%= link_to 'Day', day_path + @url_date, class: "btn btn-default view-button" %>
+          <%= link_to 'Week', week_path + @url_date, class: "btn btn-default view-button" %>
+          <%= link_to 'Month', month_path + @url_date, class: "btn btn-default view-button" %>
+          <%= link_to 'Year', year_path + @url_date, class: "btn btn-default view-button" %>
+        </div>
 
-      <div class="btn-group btn-group-sm buttons" role="group">
-        <%= link_to 'Prev', request.path + @prev, class: "btn btn-default view-button" %>
-        <%= link_to 'Today', request.path + @today, class: "btn btn-default view-button" %>
-        <%= link_to 'Next', request.path + @next, class: "btn btn-default view-button" %>
-      </div>
+        <div class="btn-group btn-group-sm buttons" role="group">
+          <%= link_to 'Prev', request.path + @prev, class: "btn btn-default view-button" %>
+          <%= link_to 'Today', request.path + @today, class: "btn btn-default view-button" %>
+          <%= link_to 'Next', request.path + @next, class: "btn btn-default view-button" %>
+        </div>
+      <% end %>
 
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">

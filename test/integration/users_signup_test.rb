@@ -20,7 +20,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     end
     assert_redirected_to home_url
     follow_redirect!
-    assert_template 'static_pages/home'
+    assert_template 'static_pages/month_view'
     assert is_logged_in?
   end
 end
