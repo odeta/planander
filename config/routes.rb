@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'events/create'
+
   root 'sessions#new' # automatically creates a helper root_url
   get    '/signup',  to: 'users#new'
   post   '/signup',  to: 'users#create'
@@ -12,4 +14,5 @@ Rails.application.routes.draw do
   post   '/change',  to: 'static_pages#change'
 
   resources :users, except: %i[show]
+  resources :events, only: %i[create]
 end
