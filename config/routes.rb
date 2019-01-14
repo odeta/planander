@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
   get    '/home',    to: 'static_pages#month_view'
+  get    '/day',     to: 'static_pages#day_view'
+  get    '/week',    to: 'static_pages#week_view'
+  get    '/month',   to: 'static_pages#month_view'
+  get    '/year',    to: 'static_pages#year_view'
 
   resources :users, except: %i[show]
 end

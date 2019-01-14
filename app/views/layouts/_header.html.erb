@@ -13,30 +13,17 @@
     <% if logged_in? %>
 
       <div class="btn-group btn-group-sm buttons" role="group">
-        <button id="day" type="button" class="btn btn-default view-button" onclick="dayClick()">Day</button>
-        <button id="week" type="button" class="btn btn-default view-button" onclick="weekClick()">Week</button>
-        <button id="month" type="button" class="btn btn-default view-button" onclick="monthClick()">Month</button>
-        <%#= button_to "Month", home_path, remote: true, class: "btn btn-default view-button", type: "button" %>
-        <%#= button_to "Month", home_path, remote: true, class: "btn btn-default view-button", type: "button" %>
-        <%#= button_to "Month", home_path, remote: true, class: "btn btn-default view-button", type: "button" %>
-        <%#= button_to "Month", home_path, remote: true, class: "btn btn-default view-button", type: "button" %>
-
-        <button id="year" type="button" class="btn btn-default view-button" onclick="yearClick()">Year</button>
+        <%= link_to 'Day', day_path + @url_date, class: "btn btn-default view-button" %>
+        <%= link_to 'Week', week_path + @url_date, class: "btn btn-default view-button" %>
+        <%= link_to 'Month', month_path + @url_date, class: "btn btn-default view-button" %>
+        <%= link_to 'Year', year_path + @url_date, class: "btn btn-default view-button" %>
       </div>
 
-      <script>
-          let buttons = ["day", "week", "month", "year"];
-          function dayClick() { disableClickedButton(buttons[0]); }
-          function weekClick() { disableClickedButton(buttons[1]); }
-          function monthClick() { disableClickedButton(buttons[2]); document.cookie = "last_date="; }
-          function yearClick() { disableClickedButton(buttons[3]); }
-          function disableClickedButton(id) {
-              buttons.forEach(function (element) {
-                  document.getElementById(element).disabled = false;
-              });
-              document.getElementById(id).disabled = true;
-          }
-      </script>
+      <div class="btn-group btn-group-sm buttons" role="group">
+        <%= link_to 'Prev', request.path + @prev, class: "btn btn-default view-button" %>
+        <%= link_to 'Today', request.path + @today, class: "btn btn-default view-button" %>
+        <%= link_to 'Next', request.path + @next, class: "btn btn-default view-button" %>
+      </div>
 
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
