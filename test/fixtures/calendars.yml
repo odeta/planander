@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  color: MyString
-  title: MyString
-  user: one
+michaels:
+  color: ffffff
+  title: Birthdays
+  user: michael
 
-two:
-  color: MyString
-  title: MyString
-  user: two
+johns:
+  color: ffffff
+  title: Family
+  user: john
