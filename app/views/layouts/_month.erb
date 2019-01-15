@@ -1,0 +1,50 @@
+<div class="container-fluid month-year-padding">
+
+  <% days = Time.days_in_month(@month, @working_date.year) %>
+
+  <div class="month-header">
+    <h2 class="var-font-size"><%= Date::MONTHNAMES[@month] %> <%= @working_date.year %></h2>
+  </div>
+
+  <div class="d-flex month-header">
+    <% i = 0 %>
+    <% until i == 7 %>
+      <div class="day-width full-height" style="border: 3px"><p><%#= Date::DAYNAMES[i] %></p></div>
+      <% i = i + 1 %>
+    <% end %>
+  </div>
+
+  <div class="cal-row d-flex" style="background-color: beige">
+    <% i, first_week_day = 0, Time.new(@working_date.year, @working_date.month, 1).wday %>
+    <% until i == first_week_day %>
+      <%= render 'layouts/void_month_day' %>
+      <% i = i + 1 %>
+    <% end %>
+    <% @current_month_day = 1 %>
+    <% until i == 7 %>
+      <%= render 'layouts/year_month_day' %>
+      <% i = i + 1 %>
+      <% @current_month_day = @current_month_day + 1 %>
+    <% end %>
+  </div>
+
+  <% iterator = 0 %>
+  <% until iterator == 5 %>
+    <div class="cal-row d-flex" style="background-color: beige">
+      <% i = 0 %>
+      <% until i == 7 or days < @current_month_day%>
+        <%= render 'layouts/month_day' %>
+        <% i = i + 1 %>
+        <% @current_month_day = @current_month_day + 1 %>
+      <% end %>
+
+      <% while i < 7 and days < @current_month_day%>
+        <%= render 'layouts/void_month_day' %>
+        <% i = i + 1 %>
+        <% @current_month_day = @current_month_day + 1 %>
+      <% end %>
+    </div>
+    <% iterator = iterator + 1 %>
+  <% end %>
+
+</div>
