@@ -1,1 +1,13 @@
-<p>Week</p>
+<div class="d-flex container-fluid full-width full-height no-padding">
+
+  <% @week_day = 0 %>
+  <% while @week_day < 7 %>
+
+    <div class="scroll-height d-flex">
+      <%= render 'layouts/week_day' %>
+    </div>
+
+    <% @week_day += 1 %>
+  <% end %>
+
+</div>
