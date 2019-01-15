@@ -2,7 +2,7 @@ require 'test_helper'
 
 class StaticPagesControllerTest < ActionDispatch::IntegrationTest
   def setup
-    @user = users(:john)
+    @user = users(:archer)
   end
 
   test 'should get home' do
