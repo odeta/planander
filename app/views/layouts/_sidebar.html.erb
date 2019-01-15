@@ -1,15 +1,18 @@
 <nav id="sidebar">
     <ul class="list-unstyled">
         <% current_user.calendars.each do |cal| %>
-            <li>
+            <li style="padding-bottom: 9px;">
             <button type="button" class="cal-button" id="<%= "#{cal.title}#{cal.id}" %>"><%= cal.title %></button>
             <button type="button" onClick="openForm<%= cal.id %>()" class="btn btn-default btn-xs btn-edit-title"><i class="material-icons" style="color: #a6a4a9;">create</i></button>
-            <p><form id="edit<%= cal.id %>"  class="form-inline" style="display:none;" method="post" action="/updatetitle">
-                <input type="text" name="newtitle" value="<%= cal.title %>" class="form-control" style="width: 100px; margin: 0; max-height: 23px;">
-                <input type="color" name="newcolor" value="<%= cal.color %>" class="form-control" style="width: 100px; margin: 0; max-height: 23px; margin-top: 3px;">
-                <input type="hidden" name="cid" value="<%= cal.id %>">
-                <button type="submit" name="submit" class="btn btn-default btn-xs" style="width: 70px;">Submit</button>
-            </form></p>
+            <br><form id="edit<%= cal.id %>"  class="form-inline" style="display:none;" method="post" action="/calendars/<%= cal.id %>">
+                <input type="text" name="newtitle" value="<%= cal.title %>" class="form-control cal-form-control" style="margin-top: 5px;">
+                <input type="color" name="newcolor" value="<%= cal.color %>" class="form-control cal-form-control" style="margin-top: 3px;">
+                <br><%= button_to "Update", calendar_path(id: cal.id), method: :put, class: "btn btn-info form-control btn-xs btn-cal-form" %>
+                <div id="delete<%= cal.id %>" style="display: none;" >
+                    <%= button_to "Delete", calendar_path(id: cal.id), method: :delete, class: "btn btn-danger form-control btn-xs btn-cal-form"%>
+                </div>
+            </form>
+
             </li>
             <script>
             function openForm<%= cal.id %>() {
@@ -18,6 +21,12 @@
                     x.style.display = 'inline';
                 } else {
                     x.style.display = 'none';
+                }
+                y = document.getElementById("delete<%= cal.id %>");
+                if(y.style.display === 'none') {
+                    y.style.display = 'inline';
+                } else {
+                    y.style.display = 'none';
                 }
             }
             </script>

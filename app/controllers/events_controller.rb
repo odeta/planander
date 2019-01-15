@@ -15,6 +15,7 @@ class EventsController < ApplicationController
       flash[:success] = 'Event created!'
       redirect_to home_url
     else
+      puts @event.errors.messages.to_s
       flash[:danger] = 'Event was not created :('
       redirect_to home_url
     end

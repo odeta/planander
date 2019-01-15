@@ -244,7 +244,7 @@ input {
     font-size: 16px;
   }
   li:hover {
-    background-color: #BCBABE;
+    background-color: #e6e6e6;
   }
 }
 
@@ -356,16 +356,33 @@ h2, p {
   }
 }
 
+.cal-form-control {
+  width: 100px !important;
+  margin: 0;
+  max-height: 23px !important;
+}
+
+.btn-cal-form {
+  width: 70px !important;
+  margin: 0;
+  max-height: 23px;
+  margin-top: 3px;
+  min-height: 23px;
+}
+
 @media (max-width: 768px) {
   #new-cal-modal, #new-event-modal {
     max-width: 355px;
   }
 }
 
-#new-cal-modal .no-padding {
+.no-padding {
   padding: 0 !important;
 }
 
+.form-group {
+  margin-bottom: 0 !important;
+}
 .year-row {
   height: 25%;
   width: 100%;
