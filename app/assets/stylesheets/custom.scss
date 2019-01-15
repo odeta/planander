@@ -431,5 +431,12 @@ h2, p {
 
 .scroll-height {
   height: 240%;
-  overflow: scroll;
+}
+
+.overflow-auto {
+  overflow: auto;
+}
+
+.week-day-width {
+  width: calc(100% / 7);
 }
