@@ -7,7 +7,7 @@
 <div class="d-flex month-header">
   <% i = 0 %>
   <% until i == 7 %>
-    <div class="day-width full-height" style="border: 3px"><p><%= Date::DAYNAMES[i] %></p></div>
+    <div class="day-width full-height weekday-size" style="border: 3px; font"><p><%= Date::DAYNAMES[i] %></p></div>
     <% i = i + 1 %>
   <% end %>
 </div>
