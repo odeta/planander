@@ -9,9 +9,8 @@ Rails.application.routes.draw do
   get    '/week',        to: 'static_pages#week_view'
   get    '/month',       to: 'static_pages#month_view'
   get    '/year',        to: 'static_pages#year_view'
-  post   '/updatetitle', to: 'calendars#update'
   
   resources :users, except: %i[show]
-  resources :calendars, only: %i[create]
+  resources :calendars, only: %i[create update destroy]
   resources :events, only: %i[create]
 end
