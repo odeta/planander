@@ -17,14 +17,14 @@ class CalendarsController < ApplicationController
 
   def update
     calendar = current_user.calendars.find(cal_params[:cid])
-    calendar.update(title: cal_params[:newtitle])
+    calendar.update(title: cal_params[:newtitle], color: cal_params[:newcolor])
     redirect_to home_path
   end
 
   private
 
   def cal_params
-    params.permit(:cid, :newtitle)
+    params.permit(:cid, :newtitle, :newcolor)
   end
 
   def cal_params2
