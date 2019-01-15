@@ -2,6 +2,7 @@ require 'date'
 
 class StaticPagesController < ApplicationController
   before_action :logged_in_user, only: %i[home]
+  skip_before_action :verify_authenticity_token, only: %i[change]
 
   def day_view
     @working_date = check_parameters
