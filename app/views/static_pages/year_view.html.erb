@@ -1,7 +1,7 @@
 <% @month = 1 %>
 <% while @month <= 12 %>
-  <% if @month % 4 == 1 %>
-    <div class="d-flex year-row">
+  <% if @month % 3 == 1 %>
+    <div class="d-flex year-row year-layout">
   <% end %>
   <a href="<%= month_path + "?year=" + String(@working_date.year) + "&month="\
                + String(@month) + "&day=" + String(@working_date.day) %>" class="month-in-year">
@@ -9,7 +9,7 @@
       <%= render 'layouts/month' %>
     </div>
   </a>
-  <% if @month % 4 == 0 %>
+  <% if @month % 3 == 0 %>
     </div>
   <% end %>
   <% @month += 1 %>
