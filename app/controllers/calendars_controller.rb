@@ -8,23 +8,23 @@ class CalendarsController < ApplicationController
     @calendar = current_user.calendars.new(title: title, color: color)
     if @calendar.save
       flash[:success] = 'Calendar created!'
-      redirect_to home_url
+      redirect_to month_url
     else
       flash[:danger] = 'Calendar was not created!'
-      redirect_to home_url
+      redirect_to month_url
     end
   end
 
   def update
     calendar = current_user.calendars.find(cal_params[:id])
     calendar.update(title: cal_params[:newtitle], color: cal_params[:newcolor])
-    redirect_to home_path
+    redirect_to month_path
   end
 
   def destroy
     Calendar.find(cal_params[:id]).destroy
     flash[:success] = 'Calendar deleted!'
-    redirect_to home_path
+    redirect_to month_path
   end
 
   private

@@ -1,8 +1,7 @@
 require 'date'
 
 class StaticPagesController < ApplicationController
-  before_action :logged_in_user, only: %i[home]
-  skip_before_action :verify_authenticity_token, only: %i[change]
+  before_action :logged_in_user
 
   def day_view
     @working_date = check_parameters
@@ -53,14 +52,5 @@ class StaticPagesController < ApplicationController
 
   def url_date(date)
     "?year=" + String(date.year) + "&month=" + String(date.month) + "&day=" + String(date.day)
-  end
-
-  # Confirms a logged-in user.
-  def logged_in_user
-    unless logged_in?
-      store_location
-      flash[:danger] = 'Please log in.'
-      redirect_to root_url
-    end
   end
 end

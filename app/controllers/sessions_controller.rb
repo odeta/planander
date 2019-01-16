@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       if user.activated?
         log_in user
         params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-        redirect_back_or home_url
+        redirect_back_or month_url
       else
         message  = "Account not activated. Check your email for the activation link."
         flash[:warning] = message
@@ -31,6 +31,6 @@ class SessionsController < ApplicationController
 
   # Confirms a logged-in user.
   def logged_in_user
-    redirect_to home_url if logged_in?
+    redirect_to month_url if logged_in?
   end
 end

@@ -13,11 +13,11 @@ class EventsController < ApplicationController
                             notes: notes, place: place)
     if @event.save
       flash[:success] = 'Event created!'
-      redirect_to home_url
+      redirect_to month_url
     else
       puts @event.errors.messages.to_s
       flash[:danger] = 'Event was not created :('
-      redirect_to home_url
+      redirect_to month_url
     end
   end
 
@@ -25,14 +25,5 @@ class EventsController < ApplicationController
 
   def event_params
     params.permit(:title, :start_time, :end_time, :notes, :place, :calendar_id)
-  end
-
-  # Confirms a logged-in user.
-  def logged_in_user
-    unless logged_in?
-      store_location
-      flash[:danger] = 'Please log in.'
-      redirect_to home_url
-    end
   end
 end
