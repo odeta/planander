@@ -3,36 +3,32 @@ class EventsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: %i[create]
 
   def create
-    calendar = current_user.calendars.find(event_params[:calendar_id])
-    title = event_params[:title]
-    start_time = event_params[:start_time]
-    end_time = event_params[:end_time]
-    notes = event_params[:notes]
-    place = event_params[:place]
-    @event = calendar.events.build(title: title, start_time: start_time, end_time: end_time,
-                            notes: notes, place: place)
-    if @event.save
-      flash[:success] = 'Event created!'
-      redirect_to home_url
+    unless event_params[:calendar_id].nil?
+      calendar = current_user.calendars.find(event_params[:calendar_id]) 
+      title = event_params[:title]
+      start_time = event_params[:start_time]
+      end_time = event_params[:end_time]
+      notes = event_params[:notes]
+      place = event_params[:place]
+      @event = calendar.events.build(title: title, start_time: start_time, end_time: end_time,
+                                     notes: notes, place: place)
+      if @event.save
+        flash[:success] = 'Event created!'
+        redirect_to month_url
+      else
+        puts @event.errors.messages.to_s
+        flash[:danger] = 'Event was not created :('
+        redirect_to month_url
+      end
     else
-      puts @event.errors.messages.to_s
-      flash[:danger] = 'Event was not created :('
-      redirect_to home_url
+      flash[:danger] = 'You have to select a calendar.'
+      redirect_to month_url
     end
   end
-
+  
   private
 
   def event_params
     params.permit(:title, :start_time, :end_time, :notes, :place, :calendar_id)
-  end
-
-  # Confirms a logged-in user.
-  def logged_in_user
-    unless logged_in?
-      store_location
-      flash[:danger] = 'Please log in.'
-      redirect_to home_url
-    end
   end
 end

@@ -13,8 +13,11 @@
       <%= render 'layouts/sidebar' if logged_in? %>
       <div id="view-wrapper" class="container-fluid month-layout">
         <% flash.each do |message_type, message| %>
-          <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
-        <% end %>
+          <div class="alert alert-<%= message_type %> alert-dismissible" style="margin-bottom: 0;">
+            <button type="button" class="close" aria-hidden="true">&times;</button>
+            <p><%= message %></p>
+          </div>
+          <% end %>
         <%= yield %>
         <%#= debug(params) if Rails.env.development? %>
       </div>
@@ -27,6 +30,10 @@
       $(document).ready(function () {
           $('#sidebarCollapse').on('click', function () {
               $('#sidebar').toggleClass('active');
+          });
+
+          $(".alert button.close").click(function (e) {
+              $(this).parent().slideUp();
           });
       });
     </script>

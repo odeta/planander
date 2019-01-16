@@ -6,8 +6,13 @@
             <button type="button" onClick="openForm<%= cal.id %>()" class="btn btn-default btn-xs btn-edit-title"><i class="material-icons" style="color: #a6a4a9;">create</i></button>
             <br><form id="edit<%= cal.id %>"  class="form-inline" style="display:none;" method="post" action="/calendars/<%= cal.id %>">
                 <input type="text" name="newtitle" value="<%= cal.title %>" class="form-control cal-form-control" style="margin-top: 5px;">
-                <input type="color" name="newcolor" value="<%= cal.color %>" class="form-control cal-form-control" style="margin-top: 3px;">
-                <br><%= button_to "Update", calendar_path(id: cal.id), method: :put, class: "btn btn-info form-control btn-xs btn-cal-form" %>
+                <% colors = ['#ffb3ba', '#ffdfba', '#ffffba', '#baffc9', '#bae1ff', '#e2b1cd', '#e16e79'] %>
+                <select id="select-color<%= cal.id %>" name="newcolor" class="form-control cal-form-control" style="margin-top: 3px; background-color: <%= cal.color %>">
+                    <% colors.each do |color| %>    
+                        <option class="<%= color %>" <%= "selected='selected'" if color == cal.color%> value="<%= color %>" style="background-color:<%= color %>;"></option>
+                    <% end %>
+                </select><br>
+                <%= button_to "Update", calendar_path(id: cal.id), method: :put, class: "btn btn-info form-control btn-xs btn-cal-form" %>
                 <div id="delete<%= cal.id %>" style="display: none;" >
                     <%= button_to "Delete", calendar_path(id: cal.id), method: :delete, class: "btn btn-danger form-control btn-xs btn-cal-form"%>
                 </div>
@@ -15,6 +20,11 @@
 
             </li>
             <script>
+            $("#select-color<%= cal.id %>").change(function(){
+                var color = $("option:selected", this).attr("class");
+                $("#select-color<%= cal.id %>").attr("style", "background-color: " + color);
+            });
+
             function openForm<%= cal.id %>() {
                 x = document.getElementById("edit<%= cal.id %>");
                 if(x.style.display === 'none') {
@@ -34,5 +44,3 @@
         <button type="button" class="btn btn-default btn-xs add-calendar" data-toggle="modal" data-target="#new-cal-modal"><i class="material-icons menu-icon">add</i></button>
     </ul>
 </nav>
-
-

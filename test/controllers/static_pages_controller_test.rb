@@ -7,7 +7,7 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
 
   test 'should get home' do
     log_in_as(@user)
-    get home_path
+    get month_path
     assert_response :success
     assert_select 'title', 'Planander'
   end

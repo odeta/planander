@@ -24,7 +24,7 @@ class UsersEditTest < ActionDispatch::IntegrationTest
                                               password: '',
                                               password_confirmation: '' } }
     assert_not flash.empty?
-    assert_redirected_to home_path
+    assert_redirected_to month_path
     @user.reload
     assert_equal email, @user.email
   end
