@@ -1,9 +1,36 @@
-<div class="d-flex container-fluid full-width full-height no-padding overflow-auto">
+<div class="week-date-bar d-flex container-fluid no-padding full-width" style="right: 0">
+  <% iterator = 0 %>
+
+  <% while @working_date.wday > 0 %>
+    <% @working_date -= 1.day %>
+  <% end %>
+
+  <div class="time-width"></div>
+
+  <% while iterator < 7 %>
+
+    <div class="full-height d-flex week-day-width" style="position: relative">
+      <p class="centered-text" style="font-size:1.2vw; text-align: center;"><%= @working_date.day %><br><%= Date::DAYNAMES[iterator] %></p>
+    </div>
+    <% @working_date += 1.day %>
+    <% iterator += 1 %>
+  <% end %>
+
+</div>
+
+<div style="height: 92%" class="d-flex container-fluid full-width no-padding overflow-auto">
+
+  <div class="scroll-height time-width">
+    <% hour = 0 %>
+    <% while (hour += 1) < 24 %>
+      <p class="hours-styling" style="top: <%= hour * 4.17 %>%; background-color: red;"><%= String(hour) + ":00" %></p>
+    <% end %>
+  </div>
 
   <% @week_day = 0 %>
   <% while @week_day < 7 %>
 
-    <div class="scroll-height d-flex week-day-width">
+    <div class="scroll-height d-flex week-day-width week-day-border time-line">
       <%= render 'layouts/week_day' %>
     </div>
 

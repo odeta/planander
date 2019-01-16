@@ -363,9 +363,8 @@ h2, p {
 
 .btn-cal-form {
   width: 70px !important;
-  margin: 0;
+  margin: 3px 0 0 0;
   max-height: 23px;
-  margin-top: 3px;
   min-height: 23px;
 }
 
@@ -438,5 +437,39 @@ h2, p {
 }
 
 .week-day-width {
-  width: calc(100% / 7);
+  width: 13%;
+}
+
+.week-day-border {
+  border: solid black ;
+  border-width: 1px 0 1px 1px;
+}
+
+.time-line {background: repeating-linear-gradient(#ffffff, #ffffff 4.14%, #000000 0px, #000000 4.17%);}
+
+.time-width {
+  width: 9%;
+  padding: 0;
+  position: relative;
+}
+
+.hours-styling {
+  text-align: center;
+  font-size: 2vh;
+  position: absolute;
+  transform: translate(0, -50%);
+  left: 10%;
+}
+
+.week-date-bar {
+  height: 8%;
+  text-align: center;
+}
+
+.centered-text {
+  margin: 0;
+  position: absolute;               /* 2 */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%)
 }
