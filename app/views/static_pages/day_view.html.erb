@@ -1,1 +1,22 @@
-<h1>Day View</h1>
+<div class="week-date-bar d-flex container-fluid no-padding full-width" style="right: 0">
+
+  <div class="full-height d-flex full-width date-bar-font-size" style="position: relative">
+    <p class="centered-text" style="text-align: center;"><%= @working_date.day %> <%= Date::DAYNAMES[@working_date.wday] %></p>
+  </div>
+
+</div>
+
+<div style="height: 92%" class="d-flex container-fluid full-width no-padding overflow-auto">
+
+  <div class="scroll-height time-width">
+    <% hour = 0 %>
+    <% while (hour += 1) < 24 %>
+      <p class="hours-styling" style="top: <%= hour * 4.17 %>%;"><%= String(hour) + ":00" %></p>
+    <% end %>
+  </div>
+
+  <div class="scroll-height d-flex week-day-border day-view-day-width time-line">
+    <%= render 'layouts/week_day' %>
+  </div>
+
+</div>
