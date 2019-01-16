@@ -373,7 +373,7 @@ h2, p {
   }
 }
 
-@media (max-width: 597px) {
+@media (max-width: 527px) {
   body {
     padding-top: 61px;
   }
@@ -424,6 +424,9 @@ h2, p {
   font-size: 1.5vh;
   @media only screen and (max-width: 768px) {
     font-size: 2vw;
+  }
+  p {
+    font-size: 1.4em !important;
   }
 }
 
@@ -479,12 +482,20 @@ h2, p {
 
 .centered-text {
   margin: 0;
-  position: absolute;               /* 2 */
+  position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%)
 }
-.day-view-day-width {
+
+.select-field {
+  margin-top: 3px; 
+  background-color: #ffb3ba; 
+  max-width: 83%;
+  @media only screen and (max-width: 768px) {
+    max-width: 100%;
+  }
+}.day-view-day-width {
   width: 91%;
   @media only screen and (max-width: 500px) {
     width: 85%;
