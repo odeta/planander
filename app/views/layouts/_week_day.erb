@@ -6,18 +6,20 @@
     <% iterator += 1 %>
     <% end %>
   </div>
-  <% @event_list.each do |event| %>
-    <% if event.start_time.year.equal?(@working_date.year) or event.end_time.year.equal?(@working_date.year) %>
-      <% if event.start_time.month.equal?(@working_date.month) or event.end_time.month.equal?(@working_date.month) %>
-        <% if event.start_time.day.equal?(@working_date.day) or event.end_time.day.equal?(@working_date.day) %>
-          <div style="position: absolute; top: <%= beginning_time(event) %>%;
-              background-color: #bcbabe; bottom: <%= end_time(event) %>%;
-          left: 0; right: 0; overflow: hidden">
 
-            <%= "Beginning: " + String(event.start_time) + " End: " + String(event.end_time) %>
-          </div>
-        <% end %>
-      <% end %>
+  <% event_list = event_object_list %>
+  <% event_list = set_divider(event_list) %>
+  <% event_list.each do |event| %>
+    <% if check(event) %>
+      <a href="<%= month_path %>">
+        <div style="position: absolute; top: <%= @beginning %>%;
+            background-color: <%= event.calendar.color %>; bottom: <%= @ending %>%;
+        left: 0; width: <%= 100 / event.divider %>%; overflow: hidden; padding: 2px">
+          <%= event.start_time_normal %> <br>
+          <%= event.title %> <br>
+          <%= event.location %> <br>
+        </div>
+      </a>
     <% end %>
   <% end %>
 </div>
