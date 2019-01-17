@@ -14,15 +14,15 @@ class EventsController < ApplicationController
                                      notes: notes, place: place)
       if @event.save
         flash[:success] = 'Event created!'
-        redirect_to request.referrer
+        redirect_to month_url
       else
         puts @event.errors.messages.to_s
-        flash[:danger] = "Event was not created, title is required"
-        redirect_to request.referrer
+        flash[:danger] = 'Event was not created :('
+        redirect_to month_url
       end
     else
       flash[:danger] = 'You have to select a calendar.'
-      redirect_to request.referrer
+      redirect_to month_url
     end
   end
   
