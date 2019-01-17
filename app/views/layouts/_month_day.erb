@@ -1,1 +1,6 @@
-<div class="day-width full-height day-layout var-font-size"><p style="text-align: center;"><%= @current_month_day %></p></div>
+<a class="day-width full-height day-layout var-font-size" href="<%= day_path + "?year=" + String(@working_date.year) + "&month="\
+               + String(@working_date.month) + "&day=" + String(@current_month_day) %>" class="day-in-month">
+    <div class="full-width full-height"
+        <p style="text-align: center;"><%= @current_month_day %></p>
+    </div>
+</a>

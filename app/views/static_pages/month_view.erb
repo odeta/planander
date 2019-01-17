@@ -31,7 +31,7 @@
   <div class="cal-row d-flex" style="background-color: beige">
     <% i = 0 %>
     <% until i == 7 or days < @current_month_day%>
-      <%= render 'layouts/month_day' %>
+        <%= render 'layouts/month_day' %>
       <% i = i + 1 %>
       <% @current_month_day = @current_month_day + 1 %>
     <% end %>

@@ -402,6 +402,16 @@ h2, p {
   margin: 0;
 }
 
+.day-in-month {
+  height: 100%;
+  width: 33.3333%;
+  margin: 0;
+}
+
+.day-in-month:hover {
+  text-decoration: none;
+}
+
 .month-in-year:hover {
   text-decoration: none;
 }
@@ -424,9 +434,6 @@ h2, p {
   font-size: 1.5vh;
   @media only screen and (max-width: 768px) {
     font-size: 2vw;
-  }
-  p {
-    font-size: 1.4em !important;
   }
 }
 
@@ -507,4 +514,10 @@ h2, p {
   @media only screen and (max-width: 800px) {
     font-size: 2vh;
   }
+}
+
+.no-dec {
+  text-decoration: none !important;
+  border: 1px solid #464646;
+  color: #404040;
 }
