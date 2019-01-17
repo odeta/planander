@@ -9,6 +9,7 @@ class StaticPagesController < ApplicationController
     @next = url_date(@working_date + 1.day)
     @today = url_date(Time.now)
     @prev = url_date(@working_date - 1.day)
+    get_events
   end
 
   def week_view
@@ -17,6 +18,7 @@ class StaticPagesController < ApplicationController
     @next = url_date(@working_date + 7.days)
     @today = url_date(Time.now)
     @prev = url_date(@working_date - 7.days)
+    get_events
   end
 
   def month_view
@@ -25,6 +27,7 @@ class StaticPagesController < ApplicationController
     @next = url_date(@working_date + 1.month)
     @today = url_date(Time.now)
     @prev = url_date(@working_date - 1.month)
+    get_events
   end
 
   def year_view
@@ -36,6 +39,16 @@ class StaticPagesController < ApplicationController
   end
 
   private
+
+  def get_events
+    @event_list = []
+    current_user.calendars.each do |cal|
+      cal.events.each do |event|
+        @event_list.push event
+      end
+      puts @event_list
+    end
+  end
 
   def check_parameters
     @working_date = Time.now

@@ -1,1 +1,23 @@
+<div class="container-fluid" style="position: relative">
+  <div>
+    <% iterator = 1 %>
+    <% while iterator < 24 %>
+      <div class="d-flex" style="position: absolute; top: <%= iterator * 100.0 / 24 %>%; left: 0; width: 100%; height: 1px; border: 0.5px solid #bcbabe;"></div>
+    <% iterator += 1 %>
+    <% end %>
+  </div>
+  <% @event_list.each do |event| %>
+    <% if event.start_time.year.equal?(@working_date.year) or event.end_time.year.equal?(@working_date.year) %>
+      <% if event.start_time.month.equal?(@working_date.month) or event.end_time.month.equal?(@working_date.month) %>
+        <% if event.start_time.day.equal?(@working_date.day) or event.end_time.day.equal?(@working_date.day) %>
+          <div style="position: absolute; top: <%= beginning_time(event) %>%;
+              background-color: #bcbabe; bottom: <%= end_time(event) %>%;
+          left: 0; right: 0; overflow: hidden">
 
+            <%= "Beginning: " + String(event.start_time) + " End: " + String(event.end_time) %>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
