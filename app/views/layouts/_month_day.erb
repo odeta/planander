@@ -1,1 +1,18 @@
-<div class="day-width full-height day-layout var-font-size"><p style="text-align: center;"><%= @current_month_day %></p></div>
+
+  <div style="text-align: center;" class="day-width full-height day-layout">
+    <a class="var-font-size center" href="<%= day_path + "?year=" + String(@working_date.year) + "&month="\
+               + String(@working_date.month) + "&day=" + String(@current_month_day) %>" style="margin: 10px"><%= @current_month_day %></a>
+      <% event_list = event_object_list %>
+      <% event_list = set_divider(event_list) %>
+      <% event_list.sort_by { |event| [-event.start_time] } %>
+      <% event_list.each do |event| %>
+        <% if month_check(event, @current_month_day) %>
+          <a class="full-width" href="<%= month_path %>">
+            <div class="full-width" style="background-color: <%= event.calendar.color %>; text-align: left;
+                overflow: hidden; padding: 2px; margin: 2px 0; height: 15%; display: block;">
+              <%= event.start_time_normal %> <%= event.title %> <%= event.location %>
+            </div>
+          </a>
+        <% end %>
+      <% end %>
+  </div>
