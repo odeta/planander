@@ -11,7 +11,6 @@ class CalendarsController < ApplicationController
       flash[:success] = 'Calendar created!'
       redirect_to request.referer
     else
-      puts @calendar.errors.messages.to_s
       flash[:danger] = 'Calendar was not created!'
       redirect_to request.referer
     end
@@ -19,8 +18,13 @@ class CalendarsController < ApplicationController
 
   def update
     calendar = current_user.calendars.find(cal_params[:id])
-    calendar.update(title: cal_params[:newtitle], color: cal_params[:newcolor])
-    redirect_to request.referer
+    if calendar.update(title: cal_params[:newtitle], color: cal_params[:newcolor])
+      flash[:success] = 'Calendar updated!'
+      redirect_to request.referer
+    else
+      flash[:danger] = 'Calendar was not updated!'
+      redirect_to request.referer
+    end
   end
 
   def destroy

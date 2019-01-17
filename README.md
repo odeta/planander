@@ -1,6 +1,6 @@
 # PLANANDER
 
-This will be a calendar app.
+Simple calendar app. To view in browser click [here](https://planander.herokuapp.com/).
 
 ## Getting started
 

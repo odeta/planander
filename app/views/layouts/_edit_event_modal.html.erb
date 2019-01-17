@@ -1,0 +1,45 @@
+<%= form_for @e, :html => { :class => 'form-horizontal' } do |f| %>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="title">Title:</label> 
+        <div class="col-sm-10">
+        <input type="text" class="form-control" id="title" name="title" value="<%= @e.title %>">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="start-time">Start time:</label> 
+        <div class="col-sm-10">
+        <input type="datetime-local" class="form-control" id="start-time" name="start_time" value="<%= @e.start_time.strftime("%FT%H:%M") %>">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="end-time">End time:</label>
+        <div class="col-sm-10">
+        <input type="datetime-local" class="form-control" id="end-time" name="end_time" value="<%= @e.end_time.strftime("%FT%H:%M") %>">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="notes">Notes:</label>
+        <div class="col-sm-10">
+        <textarea class="form-control" rows="4" id="notes" name="notes" value="<%= @e.notes.empty? ? '' : @e.notes %>"><%= @e.notes.empty? ? '' : @e.notes %></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="place">Place:</label>
+        <div class="col-sm-10">
+        <input type="text" class="form-control" id="place" name="place" value="<%= @e.place.empty? ? '' : @e.place %>"></input>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-sm-2" for="cal">Add to calendar:</label>
+        <div class="col-sm-10">
+        <select class="form-control" id="cal" name="calendar_id">
+            <% current_user.calendars.each do |cal| %>
+                <% unless cal.id.nil? %>
+                <option value="<%= cal.id %>" <%= "selected='selected'" if cal == @e.calendar %> ><%= cal.title %></option>
+                <% end %>
+            <% end %>
+        </select>
+        </div>
+    </div>
+        <%= f.submit 'Update', class: "btn btn-info form-control" %>
+<% end %>

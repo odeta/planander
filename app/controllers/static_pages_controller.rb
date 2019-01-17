@@ -47,7 +47,6 @@ class StaticPagesController < ApplicationController
       cal.events.each do |event|
         @event_list.push event
       end
-      puts @event_list
     end
   end
 
