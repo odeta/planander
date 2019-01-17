@@ -1,3 +1,7 @@
+<div class="full-width" style="padding: 10px; height: 5%">
+  <h2 style="padding: 5px 0 0 0"><%= Date::MONTHNAMES[@working_date.month] %> <%= @working_date.year %></h2>
+</div>
+
 <div class="week-date-bar d-flex container-fluid no-padding full-width" style="right: 0">
 
   <div class="full-height d-flex full-width date-bar-font-size" style="position: relative">
@@ -6,7 +10,7 @@
 
 </div>
 
-<div style="height: 92%" class="d-flex container-fluid full-width no-padding overflow-auto">
+<div style="height: 87%" class="d-flex container-fluid full-width no-padding overflow-auto">
 
   <div class="scroll-height time-width">
     <% hour = 0 %>

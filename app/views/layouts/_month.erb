@@ -14,7 +14,7 @@
     <% end %>
   </div>
 
-  <div class="cal-row d-flex" style="background-color: beige">
+  <div class="cal-row d-flex" style="">
     <% i, first_week_day = 0, Time.new(@working_date.year, @month, 1).wday %>
     <% until i == first_week_day %>
       <%= render 'layouts/void_month_day' %>
@@ -30,10 +30,10 @@
 
   <% iterator = 0 %>
   <% until iterator == 5 %>
-    <div class="cal-row d-flex" style="background-color: beige">
+    <div class="cal-row d-flex" style="">
       <% i = 0 %>
       <% until i == 7 or days < @current_month_day%>
-        <%= render 'layouts/month_day' %>
+        <%= render 'layouts/year_month_day' %>
         <% i = i + 1 %>
         <% @current_month_day += + 1 %>
       <% end %>

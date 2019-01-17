@@ -14,12 +14,13 @@ module ApplicationHelper
     end
   end
 
+
   class EventObject
 
     def initialize(event)
       @start_day = event.start_time.day
       @end_day = event.end_time.day
-      @start_time_normal = String(event.start_time.hour) + ":" + String(event.start_time.min)
+      @start_time_normal = String(event.start_time.hour) + ":" + minutes(event)
       @start_time = event.start_time.hour + event.start_time.min / 60.0
       @end_time = event.end_time.hour + event.end_time.min / 60.0
       @id = event.id
@@ -27,6 +28,7 @@ module ApplicationHelper
       @cal = event.calendar
       @title = event.title
       @location = event.place
+      @notes = event.notes
     end
 
     def start_day
@@ -69,6 +71,18 @@ module ApplicationHelper
       @location
     end
 
+    def notes
+      @notes
+    end
+
+    def minutes(event)
+      if event.start_time.min >= 10
+        String(event.start_time.min)
+      else
+        "0" + String(event.start_time.min)
+      end
+    end
+
   end
 
   def event_object_list
@@ -103,6 +117,27 @@ module ApplicationHelper
     end
 
   end
+
+  def month_check(event, day)
+
+    if event.start_day.equal?(day) or event.end_day.equal?(day)
+
+      if event.start_day.equal?(day)
+        @beginning = beginning_time(event)
+      else
+        @beginning = 0
+      end
+
+      if event.end_day.equal?(day)
+        @ending = end_time(event)
+      else
+        @ending = 0
+      end
+
+    end
+
+  end
+
 end
 
 
