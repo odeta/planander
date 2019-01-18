@@ -1,1 +1,10 @@
-<div class="day-width full-height day-layout var-font-size"><p style="text-align: center; padding: 0"><%= @current_month_day %></p></div>
+<% color = "#ffffff" %>
+<% event_list = event_object_list(@month) %>
+  <% event_list.each do |event| %>
+    <% if month_check(event, @current_month_day) %>
+      <% color = event.calendar.color %>
+      <% break %>
+    <% end %>
+  <% end %>
+
+<div class="day-width full-height day-layout var-font-size"><p style="text-align: center; background-color: <%= color %>;padding: 0"><%= @current_month_day %></p></div>
