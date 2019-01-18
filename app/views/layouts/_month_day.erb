@@ -7,12 +7,28 @@
       <% event_list.sort_by { |event| [-event.start_time] } %>
       <% event_list.each do |event| %>
         <% if month_check(event, @current_month_day) %>
-          <a class="full-width" href="<%= month_path %>">
-            <div class="full-width" style="background-color: <%= event.calendar.color %>; text-align: left;
-                overflow: hidden; padding: 2px; margin: 2px 0; height: 15%; display: block;">
+          <button class="full-width edit-event-btn" data-toggle="modal" data-target="#edit-event-modal<%= event.id %>" 
+            style="background-color: <%= event.calendar.color %>; text-align: left; overflow: hidden; padding: 2px; margin: 1px 0; height: 18%; display: block;">
+            <div class="full-width full-height" style="padding-left: 2px; color: #4a4a4a;">
               <%= event.start_time_normal %> <%= event.title %> <%= event.location %>
             </div>
-          </a>
+          </button>
+
+          <% @e = Event.find(event.id) %>
+          <div class="modal fade" id="edit-event-modal<%= @e.id %>" role="dialog">
+            <div class="modal-dialog">
+              <div class="modal-content" style="position: absolute;">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Edit event</h4>
+                </div>
+                <div class="modal-body">
+                  <%= render 'layouts/edit_event_modal' %>
+                </div>
+              </div>
+            </div>
+          </div>
+
         <% end %>
       <% end %>
   </div>

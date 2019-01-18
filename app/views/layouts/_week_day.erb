@@ -11,16 +11,30 @@
   <% event_list = set_divider(event_list) %>
   <% event_list.each do |event| %>
     <% if check(event) %>
-      <a href="<%= month_path %>">
-        <div style="position: absolute; top: <%= @beginning %>%;
-            background-color: <%= event.calendar.color %>; bottom: <%= @ending %>%;
-        left: 0; width: <%= 100 / event.divider %>%; overflow: hidden; padding: 2px">
-          <%= event.start_time_normal %> <br>
-          <%= event.title %> <br>
-          <%= event.location %> <br>
-          <%= event.notes %> <br>
+      <a data-toggle="modal" data-target="#edit-event-modal<%= event.id %>" style="cursor: pointer;">
+        <div style="position: absolute; top: <%= @beginning %>%; background-color: <%= event.calendar.color %>; bottom: <%= @ending %>%;
+            left: 0; width: <%= 100 / event.divider %>%; overflow: hidden; padding: 2px">
+          <p class="event-p"><%= event.start_time_normal %></p>
+          <p class="event-p"><%= event.title %></p>
+          <p class="event-p"><%= event.location %></p>
+          <p class="event-p"><%= event.notes %></p>
         </div>
       </a>
+
+      <% @e = Event.find(event.id) %>
+      <div class="modal fade" id="edit-event-modal<%= @e.id %>" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content" style="position: absolute;">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Edit event</h4>
+            </div>
+            <div class="modal-body">
+              <%= render 'layouts/edit_event_modal' %>
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
   <% end %>
 </div>

@@ -322,6 +322,7 @@ input {
 
 .day-layout {
   border: 1px solid;
+  overflow: hidden;
 }
 
 .void {
@@ -426,9 +427,6 @@ h2, p {
   @media only screen and (max-width: 768px) {
     font-size: 2vw;
   }
-  p {
-    font-size: 1.4em !important;
-  }
 }
 
 .scroll-height {
@@ -508,4 +506,16 @@ h2, p {
   @media only screen and (max-width: 800px) {
     font-size: 2vh;
   }
+}
+
+.edit-event-btn {
+  border: none; 
+  padding: 0!important;
+  cursor: pointer;
+}
+
+.event-p {
+  padding: 0;
+  line-height: 19px;
+  color: #4a4a4a;
 }

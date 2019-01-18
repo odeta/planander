@@ -11,6 +11,6 @@ Rails.application.routes.draw do
   
   resources :users, except: %i[show]
   resources :calendars, only: %i[create update destroy]
-  resources :events, only: %i[create]
+  resources :events, only: %i[create update]
   resources :account_activations, only: %i[edit]
 end

@@ -19,13 +19,8 @@
           </div>
           <% end %>
         <%= yield %>
-        <%#= debug(params) if Rails.env.development? %>
       </div>
     </div>
-    <% if logged_in? %>
-      <%= render 'layouts/new_calendar_modal' %>
-      <%= render 'layouts/new_event_modal' %>
-    <% end %>
     <script>
       $(document).ready(function () {
           $('#sidebarCollapse').on('click', function () {
@@ -38,4 +33,8 @@
       });
     </script>
   </body>
+  <% if logged_in? %>
+    <%= render 'layouts/new_calendar_modal' %>
+    <%= render 'layouts/new_event_modal' %>
+  <% end %>
 </html>
