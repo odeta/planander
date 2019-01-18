@@ -85,11 +85,11 @@ module ApplicationHelper
 
   end
 
-  def event_object_list
+  def event_object_list(month)
     object_list = []
     @event_list.each do |event|
       if event.start_time.year.equal?(@working_date.year) or event.end_time.year.equal?(@working_date.year)
-        if event.start_time.month.equal?(@working_date.month) or event.end_time.month.equal?(@working_date.month)
+        if event.start_time.month.equal?(month) or event.end_time.month.equal?(month)
           object = EventObject.new(event)
           object_list.push(object)
         end

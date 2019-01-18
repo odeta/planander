@@ -2,7 +2,7 @@
   <div style="text-align: center;" class="day-width full-height day-layout">
     <a class="var-font-size center" href="<%= day_path + "?year=" + String(@working_date.year) + "&month="\
                + String(@working_date.month) + "&day=" + String(@current_month_day) %>" style="margin: 10px"><%= @current_month_day %></a>
-      <% event_list = event_object_list %>
+      <% event_list = event_object_list(@working_date.month) %>
       <% event_list = set_divider(event_list) %>
       <% event_list.sort_by { |event| [-event.start_time] } %>
       <% event_list.each do |event| %>

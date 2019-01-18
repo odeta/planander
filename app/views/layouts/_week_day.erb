@@ -7,7 +7,7 @@
     <% end %>
   </div>
 
-  <% event_list = event_object_list %>
+  <% event_list = event_object_list(@working_date.month) %>
   <% event_list = set_divider(event_list) %>
   <% event_list.each do |event| %>
     <% if check(event) %>

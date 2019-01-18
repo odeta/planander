@@ -36,6 +36,7 @@ class StaticPagesController < ApplicationController
     @next = url_date(@working_date + 1.year)
     @today = url_date(Time.now)
     @prev = url_date(@working_date - 1.year)
+    get_events
   end
 
   private
